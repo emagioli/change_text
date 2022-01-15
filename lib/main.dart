@@ -1,7 +1,7 @@
-// 1) Create a new Flutter App (in this project) and output an AppBar and some text
-// below it
 // 2) Add a button which changes the text (to any other text of your choice)
 // 3) Split the app into three widgets: App, TextControl & Text
+
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
@@ -13,6 +13,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  String _bodyText = "What's the coolest animal in the world?";
+
+  void _changeText() {
+    setState(() {
+      _bodyText = "It's the raccoon, of course!";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,15 +30,29 @@ class _MyAppState extends State<MyApp> {
           title: Text("Change Text App"),
           backgroundColor: Colors.black,
         ),
-        body: Container(
-          child: Center(
-            child: Text(
-              "This is the body text.",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                _bodyText,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
+              Container(
+                padding: const EdgeInsets.all(20.0),
+                child: ElevatedButton(
+                  onPressed: _changeText,
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.black,
+                  ),
+                  child: Text("SHOW ANSWER"),
+                ),
+              )
+            ],
           ),
         ),
       ),
