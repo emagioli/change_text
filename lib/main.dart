@@ -1,9 +1,11 @@
-// 2) Add a button which changes the text (to any other text of your choice)
 // 3) Split the app into three widgets: App, TextControl & Text
 
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+
+import './textControl.dart';
+import './bodyText.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,24 +36,12 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                _bodyText,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+              BodyText(
+                text: _bodyText,
               ),
-              Container(
-                padding: const EdgeInsets.all(20.0),
-                child: ElevatedButton(
-                  onPressed: _changeText,
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.black,
-                  ),
-                  child: Text("SHOW ANSWER"),
-                ),
-              )
+              TextControl(
+                changeText: _changeText,
+              ),
             ],
           ),
         ),
